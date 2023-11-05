@@ -40,10 +40,13 @@ class TestRegistro(unittest.TestCase):
         time.sleep(5)
         dni = 1234567890
         farmacia_login.get_dni_input().send_keys(dni)
+        print("se ingresa un dni con mas de 9 caracteres")
         time.sleep(5)
         farmacia_login.get_guardar_btn().click()
+        print("se guarda el dni ingresado")
         dni_error_text = farmacia_login.get_dni_error_txt().text
         self.assertEqual(dni_error_text, "^ Máximo 9 caracteres")
+        print("se verifica que se muestre el texto de error debajo del input dni que indica 'Maximo 9 caracteres'")
         self.driver.save_screenshot("dnicaracteres.png")
         time.sleep(3)
 

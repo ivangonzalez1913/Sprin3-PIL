@@ -24,12 +24,15 @@ class TestRegistro(unittest.TestCase):
         time.sleep(5)
         farmacia_login.get_continuar_btn().click()
         email_incorrecto = "asdasd%&.u"
+        print("se ingresa un email incorrecto, usando caracteres invalidos")
         farmacia_login.get_email_input().send_keys(email_incorrecto)
         time.sleep(5)
         farmacia_login.get_ingresar_btn().click()
+        print("se ingresa el email incorrecto")
         time.sleep(3)
         email_error_text = farmacia_login.get_email_error_txt().text
         self.assertEqual(email_error_text, "^ E-mail inválido")
+        print("se verifica que se muestra el texto de 'email invalido' debajo del input")
         self.driver.save_screenshot("emailinvalido.png")
         time.sleep(3)
     def tearDown(self):
